@@ -1,22 +1,27 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
+﻿using System;
 
 Console.WriteLine("Hello Mahyy, Good luck with your study");
 Console.WriteLine("Haavaa, Chetoreeh?");
-string input = Console.ReadLine(); // Read input as a string
-int a;
-if (int.TryParse(input, out a)) // Try to parse the input as an integer
+string input = Console.ReadLine();
+
+try
 {
-    if (a == 0) // Use "if" without a semicolon
+    int a = Convert.ToInt32(input);
+
+    if (a == 0)
     {
         Console.WriteLine("You entered 0. Please enter another number.");
     }
     else
     {
-        Console.WriteLine("You entered: " + a); // Corrected the output message
+        Console.WriteLine("You entered: " + a);
     }
 }
-else
+catch (FormatException)
 {
     Console.WriteLine("Invalid input. Please enter a valid number.");
+}
+catch (OverflowException)
+{
+    Console.WriteLine("The number you entered is too large or too small.");
 }
